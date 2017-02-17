@@ -1,1 +1,1 @@
-Google search page in HTML5
+Google Custom Search page in HTML5
