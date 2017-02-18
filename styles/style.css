@@ -1,10 +1,74 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+section {
+  margin: 0 auto;
+  overflow: auto;
+  position: relative;
+  min-height: 100%;
+}
+
+.page-wrapper {
+  padding: 10px;
+}
+
+.container{
+  float:left;
+  width:100%;
+}
+
 .center {
-    display: block;
-    margin: auto;
-    width: 80%;
+  display: block;
+  padding-top: 24px;
+  width: 80%;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.inputField {
+    flex: 1;
+}
+
+.section-left {
+  width: 50%;
+  float: left;
+}
+
+.section-right {
+  width: 50%;
+  float: right;
+}
+
+.section-left, .section-left{
+  padding-bottom: 6rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.section-left div, .section-right div {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
 }
 
 .search-field {
+  flex: 1;
 	width: 80%;
 	box-sizing: border-box;
 	border: 2px solid #ccc;
@@ -20,10 +84,47 @@
 }
 
 .search-button {
-	width: 10%;
-    background-color: #303F9F; /* Green background */
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 12px 24px; /* Some padding */
-    font-size: 16px; /* Set a font-size */
+    background-color: #303F9F;
+    border: none;
+    color: white;
+    padding: 12px 24px; 
+    font-size: 16px;
 }
+
+.search-list {
+  list-style-type: none;
+  width: 500px;
+}
+
+.image-list {
+  list-style-type: none;
+}
+
+.image-item img{
+  float: left;
+  margin: 10px;
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+ 
+  -webkit-transition: box-shadow 0.5s ease;
+  -moz-transition: box-shadow 0.5s ease;
+  -o-transition: box-shadow 0.5s ease;
+  -ms-transition: box-shadow 0.5s ease;
+  transition: box-shadow 0.5s ease;
+}
+
+.image-item img:hover {
+  -webkit-box-shadow: 0px 0px 7px rgba(190,190,190,0.9);
+  box-shadow: 0px 0px 7px rgba(190,190,190,0.9);
+}
+
+
+.search-item {
+
+}
+
+.search-item span {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+  color: #555;
+}    

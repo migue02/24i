@@ -3,22 +3,46 @@
     <head>
         <meta charset="utf-8">
         <title>24i</title>
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="styles/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <div class="center">
-          <input id="textSearch" type="text" name="search" placeholder="Search.." class="search-field"/>
-          <button id="btnSearch" class="search-button">Search</button>
-        </div>
-        <div id="divImages">
-            Images
-        </div>
-        <div id="divSearchs">
-            Searchs
-        </div>
+        <div class="page-wrapper">
+            <section class="center flex-container">
+              <input id="textSearch" type="text" name="search" placeholder="Search..." class="search-field"/>
+              <button id="btnSearch" class="search-button">Search</button>
+            </section>  
+            <section id="sectionImages" class="section-left">
+                <ul id="imagesList" class="image-list">
+                </ul>
+                <div>
+                    <label id="totalImages"></label>
+                    <button id="btnPreviousImage" class="search-button">Previous</button>
+                    <button id="btnNextImage" class="search-button">Next</button>   
+                </div>   
+            </section>
+            <section id="sectionSearchs" class="section-right">
+                <ul id="searchList" class="search-list">
+                </ul>
+                <div>
+                    <label id="totalResults"></label>
+                    <button id="btnPreviousSearch" class="search-button">Previous</button>
+                    <button id="btnNextSearch" class="search-button">Next</button>  
+                </div>   
+            </section>
+        </div>  
         <script data-main="scripts/main" src="scripts/require.js"></script>
-        <!--<script src="https://www.googleapis.com/customsearch/v1?key=AIzaSyAOc6SKyG4SUUsMc6tkdel5Fm5Dhw7c-fw&amp;cx=010392540248394977835:nhfejhgta08&amp;q=cars&amp;callback=hndlr"></script>-->
     </body>
+    <script id="searchItem" type="x-template">
+        <h3>
+            <a class="search-link" target="_blank"></a>
+        </h3>
+        <span class="search-desc"></span>
+    </script>
+    <script id="imageItem" type="x-template">
+        <a class="image-link" target="_blank">
+            <img class="image-img"></img>
+        </a>
+    </script>
 </html>
