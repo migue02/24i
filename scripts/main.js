@@ -1,9 +1,10 @@
 require(['Search', 'Utilities'], function(Search, Utilities) {
+
     var searchs = new Search();
     var images = new Search(true);
-    var currentSearchText = '';
 
     var controller = {
+        currentSearchText: '',
         init: initController,
         getSearchs: getSearchs,
         getImages: getImages,
@@ -96,7 +97,7 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
     }
 
     function getCurrentSearchText() {
-        return currentSearchText;
+        return controller.currentSearchText;
     }
 
     function getCurrentPageSearch() {
@@ -156,7 +157,7 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
 
     function doSearch(text) {
         if (!controller.isSearching()) {
-            currentSearchText = text;
+            controller.currentSearchText = text;
             controller.handleSearchPromise(searchs.doSearch(text));
             controller.handleImagePromise(images.doSearch(text));
         }
@@ -201,7 +202,10 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
     ///////////////////////////////////////
     // Form view //////////////////////////
     ///////////////////////////////////////
-
+    
+    /**
+     * Initializes all the elements to be used in the search box view, and the events
+     */
     function initFormView() {
         var self = this;
         self.content = document.getElementById("content");
@@ -230,6 +234,9 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
         self.textSearch.addEventListener('keypress', keyPressSearch);
     }
 
+    /**
+     * Renders the search box section
+     */
     function renderFormView() {
         this.spinner.classList.remove('fa-spin');
         this.spinner.classList.remove('fa-circle-o-notch');
@@ -240,22 +247,38 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
     // Search view ////////////////////////
     ///////////////////////////////////////
 
+    /**
+     * Initializes all the elements to be used in the search view, and the events
+     */
     function initSearchView() {
+        var self = this;
         this.sectionSearchs = document.getElementById("sectionSearchs");
         this.paginationSearchs = document.getElementById("paginationSearchs");
         this.totalResults = document.getElementById("totalResults");
         this.searchList = document.getElementById("searchList");
         this.errorSearch = document.getElementById("errorSearch");
+        this.btnPreviousSearch = document.getElementById("btnPreviousSearch");
+        this.inputPageSearch = document.getElementById("inputPageSearch");
+        this.btnNextSearch = document.getElementById("btnNextSearch");
         this.sectionSearchs.style.display = "none";
         this.totalResults.innerHTML = "";
-        this.clickPrevious = function(event) {
+        var clickPrevious = function(event) {
             controller.previousPageSearch();
         };
-        this.clickNext = function(event) {
+        var clickNext = function(event) {
             controller.nextPageSearch();
         };
+        var pageKeyPress = function(event) {
+            eventPageKeyPress(event.which, self.inputPageSearch, controller.getCurrentPageSearch(), controller.goToPageSearchs);
+        };
+        this.btnPreviousSearch.addEventListener('click', clickPrevious);
+        this.btnNextSearch.addEventListener('click', clickNext);
+        this.inputPageSearch.addEventListener('keypress', pageKeyPress);
     }
 
+    /**
+     * Renders the search list of the search section
+     */
     function renderSearchView() {
         this.sectionSearchs.style.display = "block";
         this.searchList.innerHTML = "";
@@ -282,22 +305,17 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
         }
     }
 
+    /**
+     * Renders the pagination of the search section
+     */
     function renderSearchPagination() {
-        this.paginationSearchs.innerHTML = '';
         if (controller.getErrorSearch() !== "") {
             this.paginationSearchs.style.display = "none";
         } else {
             this.paginationSearchs.style.display = "inline-block";
-            this.paginationSearchs.appendChild(Utilities.CreateButton("<", !controller.hasPreviousSearchs(), this.clickPrevious));
-            var inputPage = document.createElement('input');
-            inputPage.type = 'text';
-            inputPage.value = controller.getCurrentPageSearch();
-            var pageKeyPress = function(event) {
-                eventPageKeyPress(event.which, inputPage, controller.getCurrentPageSearch(), controller.goToPageSearchs);
-            };
-            inputPage.addEventListener('keypress', pageKeyPress);
-            this.paginationSearchs.appendChild(inputPage);
-            this.paginationSearchs.appendChild(Utilities.CreateButton(">", !controller.hasNextSearchs(), this.clickNext));
+            this.btnPreviousSearch.disabled = !controller.hasPreviousSearchs();
+            this.btnNextSearch.disabled = !controller.hasNextSearchs();
+            this.inputPageSearch.value = controller.getCurrentPageSearch();
         }
     }
 
@@ -305,22 +323,38 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
     // Images view ////////////////////////
     ///////////////////////////////////////
 
+    /**
+     * Initializes all the elements to be used in the image view, and the events
+     */
     function initImageView() {
+        var self = this;
         this.sectionImages = document.getElementById("sectionImages");
         this.paginationImages = document.getElementById("paginationImages");
         this.totalImages = document.getElementById("totalImages");
         this.imagesList = document.getElementById("imagesList");
         this.errorImages = document.getElementById("errorImages");
+        this.btnPreviousImage = document.getElementById("btnPreviousImage");
+        this.inputPageImage = document.getElementById("inputPageImage");
+        this.btnNextImage = document.getElementById("btnNextImage");
         this.sectionImages.style.display = "none";
         this.totalImages.innerHTML = "";
-        this.clickPrevious = function(event) {
+        var clickPrevious = function(event) {
             controller.previousPageImage();
         };
-        this.clickNext = function(event) {
+        var clickNext = function(event) {
             controller.nextPageImage();
         };
+        var pageKeyPress = function(event) {
+            eventPageKeyPress(event.which, self.inputPageImage, controller.getCurrentPageImages(), controller.goToPageImages);
+        };
+        this.btnPreviousImage.addEventListener('click', clickPrevious);
+        this.btnNextImage.addEventListener('click', clickNext);
+        this.inputPageImage.addEventListener('keypress', pageKeyPress);
     }
 
+    /**
+     * Renders the image list of the image section
+     */
     function renderImageView() {
         this.sectionImages.style.display = "block";
         this.imagesList.innerHTML = "";
@@ -348,22 +382,17 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
         }
     }
 
+    /**
+     * Renders the pagination of the image section
+     */
     function renderImagePagination() {
-        this.paginationImages.innerHTML = '';
         if (controller.getErrorImages() !== "") {
             this.paginationImages.style.display = "none";
         } else {
             this.paginationImages.style.display = "inline-block";
-            this.paginationImages.appendChild(Utilities.CreateButton("<", !controller.hasPreviousImages(), this.clickPrevious));
-            var inputPage = document.createElement('input');
-            inputPage.type = 'text';
-            inputPage.value = controller.getCurrentPageImages();
-            var pageKeyPress = function(event) {
-                eventPageKeyPress(event.which, inputPage, controller.getCurrentPageImages(), controller.goToPageImages);
-            };
-            inputPage.addEventListener('keypress', pageKeyPress);
-            this.paginationImages.appendChild(inputPage);
-            this.paginationImages.appendChild(Utilities.CreateButton(">", !controller.hasNextImages(), this.clickNext));
+            this.btnPreviousImage.disabled = !controller.hasPreviousImages();
+            this.btnNextImage.disabled = !controller.hasNextImages();
+            this.inputPageImage.value = controller.getCurrentPageImages();
         }
     }
 
