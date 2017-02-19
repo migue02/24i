@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html>  
     <head>
         <meta charset="utf-8">
         <title>24i</title>
@@ -9,40 +9,56 @@
     </head>
     <body>
         <div class="page-wrapper">
-            <section class="center flex-container search-section">
+            <div class="section center flex-container search-section">
               <input id="textSearch" type="text" name="search" placeholder="Search..." class="search-field"/>
               <button id="btnSearch" class="search-button">Search</button>
-            </section>  
-            <section id="sectionImages" class="section-left">
-                <ul id="imagesList" class="image-list">
-                </ul>
-                <div>
-                    <label id="totalImages"></label>
-                    <button id="btnPreviousImage" class="search-button">Previous</button>
-                    <button id="btnNextImage" class="search-button">Next</button>   
+            </div>
+            <div id="content" class="content-out">
+                <div class="content">
+                    <div id="sectionSearchs" class="content-left">
+                        <h2 class="title-content">Normal search results</h2>
+                        <span id="errorSearch" class="error">Normal search results</span>
+                        <ul id="searchList" class="search-list">
+                        </ul> 
+                    </div>
+                    <div id="sectionImages" class="content-right">
+                        <h2 class="title-content">Image search results</h2>
+                        <span id="errorImages" class="error">Normal search results</span>
+                        <ul id="imagesList" class="image-list">
+                        </ul> 
+                    </div>
+                </div>
+                <div class="bottom">
+                    <div class="bottom-left">
+                        <div class="bottom-margin">
+                            <div id="paginationSearchs" class="pagination"></div>     
+                        </div> 
+                        <div class="bottom-margin">
+                            <label id="totalResults" class="total-results"></label>
+                        </div> 
+                    </div> 
+                    <div class="bottom-right">
+                        <div class="bottom-margin">
+                            <div id="paginationImages" class="pagination"></div>     
+                        </div>     
+                        <div class="bottom-margin">
+                            <label id="totalImages" class="total-results"></label>
+                        </div>    
+                    </div>   
                 </div>   
-            </section>
-            <section id="sectionSearchs" class="section-right">
-                <ul id="searchList" class="search-list">
-                </ul>
-                <div>
-                    <label id="totalResults"></label>
-                    <button id="btnPreviousSearch" class="search-button">Previous</button>
-                    <button id="btnNextSearch" class="search-button">Next</button>  
-                </div>   
-            </section>
+            </div>
         </div>  
         <script data-main="scripts/main" src="scripts/require.js"></script>
+        <script id="searchItem" type="x-template">
+            <h3>
+                <a class="search-link" target="_blank"></a>
+            </h3>
+            <span class="search-desc"></span>
+        </script>
+        <script id="imageItem" type="x-template">
+            <a class="image-link" target="_blank">
+                <img class="image-img"></img>
+            </a>
+        </script>    
     </body>
-    <script id="searchItem" type="x-template">
-        <h3>
-            <a class="search-link" target="_blank"></a>
-        </h3>
-        <span class="search-desc"></span>
-    </script>
-    <script id="imageItem" type="x-template">
-        <a class="image-link" target="_blank">
-            <img class="image-img"></img>
-        </a>
-    </script>
 </html>
