@@ -18,44 +18,63 @@ section {
   min-height: 100%;
 }
 
+.flex-container {
+  display: flex;
+}
+
 .page-wrapper {
   padding: 10px;
 }
 
-.container{
-  float:left;
-  width:100%;
-}
-
 .center {
-  display: block;
-  padding-top: 24px;
   width: 80%;
+  margin-top: 30px;
+}
+/* Search field */
+.search-section {
+  border: 1px solid rgba(190,190,190, 1);
 }
 
-.flex-container {
-    display: flex;
+.search-section:hover {
+ -webkit-box-shadow: 0px 0px 7px rgba(190,190,190,0.9);
+  box-shadow: 0px 0px 7px rgba(190,190,190,0.9);
+  border: 1px solid rgba(190,190,190, 1);
 }
 
-.inputField {
-    flex: 1;
+.search-field {
+  flex: 1;
+  width: 80%;
+  outline: none;
+  border: 0px;
+  padding-left: 5px;
 }
 
+.search-button {
+    background-color: rgba(54,127,232, 1);
+    border: none;
+    color: white;
+    padding: 12px 24px; 
+    font-size: 16px;
+}
+.search-button:hover {
+    background-color: rgba(54,127,232, 0.8);
+}
+
+/* Section left and right */
 .section-left {
+  display: none;
   width: 50%;
   float: left;
 }
 
 .section-right {
+  display: none;
   width: 50%;
   float: right;
 }
 
-.section-left, .section-left{
+.section-left, .section-right{
   padding-bottom: 6rem;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .section-left div, .section-right div {
@@ -67,44 +86,31 @@ section {
   background-color: #efefef;
 }
 
-.search-field {
-  flex: 1;
-	width: 80%;
-	box-sizing: border-box;
-	border: 2px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-	background-color: white;
-	background-image: url('../images/search-icon.svg');
-	background-position: 10px 10px; 
-	background-repeat: no-repeat;
-	padding: 12px 20px 12px 40px;
-	-webkit-transition: width 0.4s ease-in-out;
-	transition: width 0.4s ease-in-out;
-}
-
-.search-button {
-    background-color: #303F9F;
-    border: none;
-    color: white;
-    padding: 12px 24px; 
-    font-size: 16px;
-}
-
+/*Search list and search item*/
 .search-list {
   list-style-type: none;
   width: 500px;
 }
 
+.search-item {
+
+}
+
+.search-item span {
+  font: 200 12px/1.5 Georgia, Times New Roman, serif;
+  color: #555;
+}  
+
+/*Image list and image item*/
 .image-list {
   list-style-type: none;
 }
 
 .image-item img{
   float: left;
-  margin: 10px;
-  width: 200px;
-  height: 200px;
+  margin: 5px;
+  width: 150px;
+  height: 150px;
   object-fit: contain;
  
   -webkit-transition: box-shadow 0.5s ease;
@@ -117,14 +123,4 @@ section {
 .image-item img:hover {
   -webkit-box-shadow: 0px 0px 7px rgba(190,190,190,0.9);
   box-shadow: 0px 0px 7px rgba(190,190,190,0.9);
-}
-
-
-.search-item {
-
-}
-
-.search-item span {
-  font: 200 12px/1.5 Georgia, Times New Roman, serif;
-  color: #555;
-}    
+}  

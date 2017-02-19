@@ -1,5 +1,6 @@
-require(["genericSearch", "searchs", "images", "GoogleCustomSearch"], function(genericSearch, searchs, images, GoogleCustomSearch) {
-
+require(["Search"], function(Search) {
+    var searchs = new Search();
+    var images = new Search(true);
     var controller = {
         init: function() {
             formView.init();

@@ -1,6 +1,6 @@
-define(['searchs'], function(searchs) {
-  var GenericSearch = require('genericSearch');
-  var options = GenericSearch.initOptions();
+define('Search', ['genericSearch'], function(genericSearch) {
+
+  var options = genericSearch.initOptions();
   var self = {
     getResults: getResults,
     getTotalSearchs: getTotalSearchs,
@@ -14,23 +14,23 @@ define(['searchs'], function(searchs) {
   ///////////////////////////////////////////////////////////
 
   function getResults() {
-    return GenericSearch.getResults(options);
+    return genericSearch.getResults(options);
   }
 
   function getTotalSearchs() {
-    return GenericSearch.getTotalSearchs(options);
+    return genericSearch.getTotalSearchs(options);
   }
 
   function doSearch(text) {
     options.searchText = text;
-    return GenericSearch.doSearch(options);
+    return genericSearch.doSearch(options);
   }
 
   function nextPage() {
-    return GenericSearch.nextPage(options);
+    return genericSearch.nextPage(options);
   }
 
   function previousPage() {
-    return GenericSearch.previousPage(options);
+    return genericSearch.previousPage(options);
   }
 });
