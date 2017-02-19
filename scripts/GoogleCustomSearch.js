@@ -639,7 +639,8 @@ define(function(GoogleCustomSearch) {
         var searchUrl = 'https://www.googleapis.com/customsearch/v1',
             searchParams = {
                 //key: 'AIzaSyAOc6SKyG4SUUsMc6tkdel5Fm5Dhw7c-fw',
-                key: 'AIzaSyBIS7VN1Ro1IN_R4rsyaMenrPrsFwke7JI',
+                //key: 'AIzaSyBIS7VN1Ro1IN_R4rsyaMenrPrsFwke7JI',
+                key: 'AIzaSyBvTHkbp8F62bEMIAhef8-CE_tJPZFhI1Y',
                 cx: '010392540248394977835:nhfejhgta08',
                 q: encodeURIComponent(query),
                 start: start,
@@ -652,7 +653,7 @@ define(function(GoogleCustomSearch) {
         var promise = new Promise(
             function(resolve, reject) {
                 /*var response = responseFixed;
-                if(searchType){
+                if (searchType) {
                     response = responseImages;
                 }
                 self.results = response.items;
@@ -665,7 +666,8 @@ define(function(GoogleCustomSearch) {
                         self.previousIndex = response.queries.previousPage.startIndex;
                     }
                 }
-                resolve(response);*/
+                resolve(response);
+                */
                 var request = new XMLHttpRequest();
                 request.open('GET', searchUrl + '?' + objectToQueryString(searchParams));
                 request.responseType = 'json';
@@ -697,9 +699,9 @@ define(function(GoogleCustomSearch) {
         if (!response) {
             reject("network error");
         } else if (response.error) {
-            var error = "Code: " + response.error.code + " Message: " + response.error.message;
+            var error = "<b>Code:</b> " + response.error.code + " <b>Message:</b> " + response.error.message;
             if (response.error.errors && response.error.errors.length > 0) {
-                error = error + " Reason: " + response.error.errors[0].reason;
+                error = error + " <b>Reason:</b> " + response.error.errors[0].reason;
             }
             reject(error);
         } else {

@@ -58,6 +58,11 @@ button {
   font-size: 16px;
 }
 
+.fa {
+    margin-left: -12px;
+    margin-right: 8px;
+}
+
 .search-button:hover {
     background-color: rgba(54,127,232, 0.8);
 }
@@ -113,12 +118,17 @@ button {
 
 .error {
   color: #D8000C;
-  background-color: #FFBABA;c
+  background-color: #FFBABA;
 }
 
 .warning {
   color: #9F6000;
   background-color: #FEEFB3;
+}
+
+.info {
+  color: #00529B;
+  background-color: #BDE5F8;
 }
 
 /* Bottom pagination */

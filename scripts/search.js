@@ -95,7 +95,7 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
    * @return {Promise}
    */
   Search.prototype.doSearch = function(text) {
-    var self = this;
+    var that = this;
     this.searching = true;
     if (text !== this.searchText) {
       this.restartResults();
@@ -104,40 +104,40 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
     this.searchText = text;
     var promise = new Promise(
       function(resolve, reject) {
-        if (self.searchText !== '') {
-          GoogleCustomSearch.doSearch(self.searchText, self.startIndex, self.count, self.searchType).then(function(response) {
-            self.restartResults();
+        if (that.searchText !== '') {
+          GoogleCustomSearch.doSearch(that.searchText, that.startIndex, that.count, that.searchType).then(function(response) {
+            that.restartResults();
             if (response.items) {
-              self.results = response.items;
+              that.results = response.items;
             }
             if (response.searchInformation) {
-              self.totalResults = response.searchInformation.totalResults;
-              self.formattedTotalResults = response.searchInformation.formattedTotalResults;
+              that.totalResults = response.searchInformation.totalResults;
+              that.formattedTotalResults = response.searchInformation.formattedTotalResults;
             }
             if (response.queries) {
               if (response.queries.request) {
-                self.startIndex = response.queries.request[0].startIndex;
-                self.count = response.queries.request[0].count;
+                that.startIndex = response.queries.request[0].startIndex;
+                that.count = response.queries.request[0].count;
               }
               if (response.queries.nextPage) {
-                self.next = response.queries.nextPage[0];
+                that.next = response.queries.nextPage[0];
               }
               if (response.queries.previousPage) {
-                self.previous = response.queries.previousPage[0];
+                that.previous = response.queries.previousPage[0];
               }
             }
             resolve(response);
-            self.searching = false;
+            that.searching = false;
           }).catch(function(reason) {
-            self.restartResults();
-            self.error = reason;
-            self.searching = false;
+            that.restartResults();
+            that.error = reason;
+            that.searching = false;
             reject(reason);
           });
         } else {
-          self.restartResults();
-          self.error = 'The search text cannot be empty';
-          self.searching = false;
+          that.restartResults();
+          that.error = 'The search text cannot be empty';
+          that.searching = false;
           resolve([]);
         }
       });
