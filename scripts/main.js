@@ -52,10 +52,13 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
             searchs.restartResults();
             images.restartResults();
         },
-        doSearch: function(text, doImages, doSearchs) {
+        isSearching: function() {
+            return searchs.isSearching() || images.isSearching();
+        },
+        doSearch: function(text) {
             currentSearchText = text;
-            var promiseImages = doImages ? images.doSearch(text) : undefined;
-            var promiseSearch = doSearchs ? searchs.doSearch(text) : undefined;
+            var promiseImages = images.doSearch(text);
+            var promiseSearch = searchs.doSearch(text);
             if (promiseImages) {
                 promiseImages.then(function(response) {
                     imagesView.render();
@@ -167,7 +170,7 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
             var clickSearch = function(event) {
                 controller.restartSearch();
                 self.content.style.display = "block";
-                controller.doSearch(self.textSearch.value, true, true);
+                controller.doSearch(self.textSearch.value);
             };
             self.btnSearch.addEventListener('click', clickSearch);
             var keyPressSearch = function(event) {
@@ -175,7 +178,7 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
                 var keyCode = event.which;
                 if (keyCode == 13) {
                     controller.restartSearch();
-                    controller.doSearch(self.textSearch.value, true, true);
+                    controller.doSearch(self.textSearch.value);
                 }
             };
             self.textSearch.addEventListener('keypress', keyPressSearch);
