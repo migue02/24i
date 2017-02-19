@@ -210,6 +210,12 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
                 this.searchList.style.display = "none";
                 this.errorSearch.style.display = "block";
                 this.errorSearch.innerHTML = controller.getErrorSearch();
+                this.errorSearch.className = 'message-info';
+                if (controller.getCurrentSearchText() === '') {
+                    this.errorSearch.className += ' warning';
+                } else {
+                    this.errorSearch.className += ' error';
+                }
             } else {
                 this.errorSearch.style.display = "none";
                 this.searchList.style.display = "block";
@@ -239,10 +245,14 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
                 inputPage.type = 'text';
                 inputPage.value = controller.getCurrentPageSearch();
                 var pageKeyPress = function(event) {
-                    var newPage = Utilities.TryParseInt(inputPage.value, controller.getCurrentPageSearch());
                     var keyCode = event.which;
-                    if (keyCode == 13 && newPage > 0) {
-                        controller.goToPageSearchs(newPage);
+                    if (keyCode == 13) {
+                        var newPage = Utilities.TryParseInt(inputPage.value, controller.getCurrentPageSearch());
+                        if (newPage > 0) {
+                            controller.goToPageSearchs(newPage);
+                        } else {
+                            inputPage.value = controller.getCurrentPageSearch();
+                        }
                     }
                 };
                 inputPage.addEventListener('keypress', pageKeyPress);
@@ -277,6 +287,12 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
                 this.imagesList.style.display = "none";
                 this.errorImages.style.display = "block";
                 this.errorImages.innerHTML = controller.getErrorImages();
+                this.errorImages.className = 'message-info';
+                if (controller.getCurrentSearchText() === '') {
+                    this.errorImages.className += ' warning';
+                } else {
+                    this.errorImages.className += ' error';
+                }
             } else {
                 this.errorImages.style.display = "none";
                 this.imagesList.style.display = "block";
@@ -307,10 +323,14 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
                 inputPage.type = 'text';
                 inputPage.value = controller.getCurrentPageImages();
                 var pageKeyPress = function(event) {
-                    var newPage = Utilities.TryParseInt(inputPage.value, controller.getCurrentPageImages());
                     var keyCode = event.which;
-                    if (keyCode == 13 && newPage > 0) {
-                        controller.goToPageImages(newPage);
+                    if (keyCode == 13) {
+                        var newPage = Utilities.TryParseInt(inputPage.value, controller.getCurrentPageImages());
+                        if (newPage > 0) {
+                            controller.goToPageImages(newPage);
+                        } else {
+                            inputPage.value = controller.getCurrentPageImages();
+                        }
                     }
                 };
                 inputPage.addEventListener('keypress', pageKeyPress);

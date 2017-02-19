@@ -105,10 +105,20 @@ button {
 }
 
 /* Error */
-.error {
-  color: red;
+.message-info {
   text-align: center;
   display: block;
+  padding: 10px;
+}
+
+.error {
+  color: #D8000C;
+  background-color: #FFBABA;c
+}
+
+.warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
 }
 
 /* Bottom pagination */
