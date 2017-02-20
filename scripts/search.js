@@ -84,7 +84,7 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
   /**
    * @return {Boolean} If it is searching
    */
-  search.prototype.issearching = function() {
+  search.prototype.isSearching = function() {
     return this.searching;
   }
 
@@ -94,7 +94,7 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
    * @param  {String} Text to search
    * @return {Promise}
    */
-  search.prototype.dosearch = function(text) {
+  search.prototype.doSearch = function(text) {
     var self = this;
     this.searching = true;
     if (text !== this.searchText) {
