@@ -1,4 +1,4 @@
-define(function(Utilities) {
+define('Utilities', function(Utilities) {
 
 	var Utilities = {
 		TryParseInt: TryParseInt,
