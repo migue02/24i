@@ -35,12 +35,13 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
 
     var formView = {
         init: initFormView,
-        render: renderFormView
+        setLoading: setLoadingFormView
     };
 
 
     var searchsView = {
         init: initSearchView,
+        setLoading: setLoadingSearchView,
         render: renderSearchView,
         renderPagination: renderSearchPagination
     };
@@ -48,6 +49,7 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
 
     var imagesView = {
         init: initImageView,
+        setLoading: setLoadingImageView,
         render: renderImageView,
         renderPagination: renderImagePagination
     };
@@ -125,36 +127,6 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
         return searchs.isSearching() || images.isSearching();
     }
 
-    function handleSearchPromise(promiseSearch) {
-        if (promiseSearch) {
-            promiseSearch.then(function(response) {
-                searchsView.render();
-                searchsView.renderPagination();
-                formView.render();
-            }).catch(function(reason) {
-                searchsView.render();
-                searchsView.renderPagination();
-                formView.render();
-                console.log('Promise rejected (' + reason + ').');
-            });
-        }
-    }
-
-    function handleImagePromise(promiseImages) {
-        if (promiseImages) {
-            promiseImages.then(function(response) {
-                imagesView.render();
-                imagesView.renderPagination();
-                formView.render();
-            }).catch(function(reason) {
-                imagesView.render();
-                imagesView.renderPagination();
-                formView.render();
-                console.log('Promise rejected (' + reason + ').');
-            });
-        }
-    }
-
     function doSearch(text) {
         if (!controller.isSearching()) {
             controller.currentSearchText = text;
@@ -199,6 +171,40 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
         }
     }
 
+    function handleSearchPromise(promiseSearch) {
+        if (promiseSearch) {
+            promiseSearch.then(function(response) {
+                searchsView.render();
+                searchsView.renderPagination();
+                searchsView.setLoading(false);
+                formView.setLoading(false);
+            }).catch(function(reason) {
+                searchsView.render();
+                searchsView.renderPagination();
+                searchsView.setLoading(false);
+                formView.setLoading(false);
+                console.log('Promise rejected (' + reason + ').');
+            });
+        }
+    }
+
+    function handleImagePromise(promiseImages) {
+        if (promiseImages) {
+            promiseImages.then(function(response) {
+                imagesView.setLoading(false);
+                imagesView.render();
+                imagesView.renderPagination();
+                formView.setLoading(false);
+            }).catch(function(reason) {
+                imagesView.setLoading(false);
+                imagesView.render();
+                imagesView.renderPagination();
+                formView.setLoading(false);
+                console.log('Promise rejected (' + reason + ').');
+            });
+        }
+    }
+
     ///////////////////////////////////////
     // Form view //////////////////////////
     ///////////////////////////////////////
@@ -212,21 +218,16 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
         self.btnSearch = document.getElementById("btnSearch");
         self.spinner = document.getElementById("spinner");
         self.textSearch = document.getElementById("textSearch");
-        self.content.style.display = "none";
-        var clickSearch = function(event) {
-            self.spinner.classList.add('fa-spin');
-            self.spinner.classList.add('fa-circle-o-notch');
+        var clickSearch = function(event) {   
+            setLoadingFormView(true);         
             controller.restartSearch();
-            self.content.style.display = "block";
             controller.doSearch(self.textSearch.value);
         };
         self.btnSearch.addEventListener('click', clickSearch);
         var keyPressSearch = function(event) {
             var keyCode = event.which;
             if (keyCode == 13) {
-                self.spinner.classList.add('fa-spin');
-                self.spinner.classList.add('fa-circle-o-notch');
-                self.content.style.display = "block";
+                setLoadingFormView(true); 
                 controller.restartSearch();
                 controller.doSearch(self.textSearch.value);
             }
@@ -235,11 +236,21 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
     }
 
     /**
-     * Renders the search box section
-     */
-    function renderFormView() {
-        this.spinner.classList.remove('fa-spin');
-        this.spinner.classList.remove('fa-circle-o-notch');
+     * Set loading state of search box view if isLoading is true
+     * @param  {Boolean}  isLoading  If true set the loading state
+     */   
+    function setLoadingFormView(isLoading) {
+        if (isLoading){
+            this.content.style.display = "none";
+            this.spinner.classList.add('loading');
+            this.spinner.classList.add('fa-spin');
+            this.spinner.classList.add('fa-circle-o-notch');
+        } else {
+            this.spinner.classList.remove('loading');
+            this.spinner.classList.remove('fa-spin');
+            this.spinner.classList.remove('fa-circle-o-notch');
+            this.content.style.display = "block";
+        }
     }
 
 
@@ -263,17 +274,36 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
         this.sectionSearchs.style.display = "none";
         this.totalResults.innerHTML = "";
         var clickPrevious = function(event) {
+            setLoadingSearchView(true);
             controller.previousPageSearch();
         };
         var clickNext = function(event) {
+            setLoadingSearchView(true);
             controller.nextPageSearch();
         };
         var pageKeyPress = function(event) {
-            eventPageKeyPress(event.which, self.inputPageSearch, controller.getCurrentPageSearch(), controller.goToPageSearchs);
+            if (event.which === 13){
+                setLoadingSearchView(true);
+                eventPageKeyPress(self.inputPageSearch, controller.getCurrentPageSearch(), controller.goToPageSearchs);
+            }
         };
         this.btnPreviousSearch.addEventListener('click', clickPrevious);
         this.btnNextSearch.addEventListener('click', clickNext);
         this.inputPageSearch.addEventListener('keypress', pageKeyPress);
+    }
+
+    /**
+     * Set loading state if isLoading is true
+     * @param  {Boolean}  isLoading  If true set the loading state
+     */    
+     function setLoadingSearchView(isLoading) {
+        if (isLoading){
+            this.sectionSearchs.classList.add('loading');
+            this.paginationSearchs.classList.add('loading');
+        } else {
+            this.sectionSearchs.classList.remove('loading');
+            this.paginationSearchs.classList.remove('loading');
+        }
     }
 
     /**
@@ -339,17 +369,36 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
         this.sectionImages.style.display = "none";
         this.totalImages.innerHTML = "";
         var clickPrevious = function(event) {
+            setLoadingImageView(true);
             controller.previousPageImage();
         };
         var clickNext = function(event) {
+            setLoadingImageView(true);
             controller.nextPageImage();
         };
         var pageKeyPress = function(event) {
-            eventPageKeyPress(event.which, self.inputPageImage, controller.getCurrentPageImages(), controller.goToPageImages);
+            if (event.which === 13){
+                setLoadingImageView(true);
+                eventPageKeyPress(self.inputPageImage, controller.getCurrentPageImages(), controller.goToPageImages);
+            }
         };
         this.btnPreviousImage.addEventListener('click', clickPrevious);
         this.btnNextImage.addEventListener('click', clickNext);
         this.inputPageImage.addEventListener('keypress', pageKeyPress);
+    }
+
+    /**
+     * Set loading state if isLoading is true
+     * @param  {Boolean}  isLoading  If true set the loading state
+     */    
+     function setLoadingImageView(isLoading) {
+        if (isLoading){
+            this.sectionImages.classList.add('loading');
+            this.paginationImages.classList.add('loading');
+        } else {
+            this.sectionImages.classList.remove('loading');
+            this.paginationImages.classList.remove('loading');
+        }
     }
 
     /**
@@ -397,20 +446,17 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
     }
 
     /**
-     * Functionality that has the key event on a page input
-     * @param  {Int}        keyCode      Key code
+     * Functionality that has the key event on a page input (when keyCode === 13)
      * @param  {Element}    inputPage    Input to evaluate
      * @param  {Int}        currentPage  Current page
      * @param  {Function}   callback     Function to execute if everything is ok
      */
-    function eventPageKeyPress(keyCode, inputPage, currentPage, callback) {
-        if (keyCode == 13) {
-            var newPage = Utilities.TryParseInt(inputPage.value, currentPage);
-            if (newPage > 0) {
-                callback(newPage);
-            } else {
-                inputPage.value = currentPage;
-            }
+    function eventPageKeyPress(inputPage, currentPage, callback) {
+        var newPage = Utilities.TryParseInt(inputPage.value, currentPage);
+        if (newPage > 0) {
+            callback(newPage);
+        } else {
+            inputPage.value = currentPage;
         }
     }
 

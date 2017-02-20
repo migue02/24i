@@ -638,8 +638,8 @@ define(function(GoogleCustomSearch) {
     function doSearch(query, start, count, searchType) {
         var searchUrl = 'https://www.googleapis.com/customsearch/v1',
             searchParams = {
-                //key: 'AIzaSyAOc6SKyG4SUUsMc6tkdel5Fm5Dhw7c-fw',
-                key: 'AIzaSyBIS7VN1Ro1IN_R4rsyaMenrPrsFwke7JI',
+                key: 'AIzaSyAOc6SKyG4SUUsMc6tkdel5Fm5Dhw7c-fw',
+                //key: 'AIzaSyBIS7VN1Ro1IN_R4rsyaMenrPrsFwke7JI',
                 //key: 'AIzaSyBvTHkbp8F62bEMIAhef8-CE_tJPZFhI1Y',
                 cx: '010392540248394977835:nhfejhgta08',
                 q: encodeURIComponent(query),
@@ -652,7 +652,7 @@ define(function(GoogleCustomSearch) {
 
         var promise = new Promise(
             function(resolve, reject) {
-                var response = responseFixed;
+                /*var response = responseFixed;
                 if (searchType) {
                     response = responseImages;
                 }
@@ -667,7 +667,7 @@ define(function(GoogleCustomSearch) {
                     }
                 }
                 resolve(response);
-                /*
+                */
                 var request = new XMLHttpRequest();
                 request.open('GET', searchUrl + '?' + objectToQueryString(searchParams));
                 request.responseType = 'json';
@@ -690,7 +690,7 @@ define(function(GoogleCustomSearch) {
                 request.onerror = function() {
                     rejectError(request.response, reject);
                 };
-                request.send();*/
+                request.send();
             });
         return promise;
     }
