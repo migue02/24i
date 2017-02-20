@@ -74,24 +74,24 @@ require(['search', 'utilities'], function(search, utilities) {
         return images.getResults();
     }
 
-    function getFormattedTotalImages() {
-        return images.getFormattedTotalSearchs();
-    }
-
     function getFormattedTotalSearchs() {
         return searchs.getFormattedTotalSearchs();
+    }
+
+    function getFormattedTotalImages() {
+        return images.getFormattedTotalSearchs();
     }
 
     function hasNextSearchs() {
         return searchs.hasNext();
     }
 
-    function hasPreviousSearchs() {
-        return searchs.hasPrevious();
-    }
-
     function hasNextImages() {
         return images.hasNext();
+    }
+
+    function hasPreviousSearchs() {
+        return searchs.hasPrevious();
     }
 
     function hasPreviousImages() {
@@ -110,12 +110,12 @@ require(['search', 'utilities'], function(search, utilities) {
         return images.getCurrentPage();
     }
 
-    function getErrorImages() {
-        return images.getError();
-    }
-
     function getErrorSearch() {
         return searchs.getError();
+    }
+
+    function getErrorImages() {
+        return images.getError();
     }
 
     function restartSearch() {
@@ -135,6 +135,12 @@ require(['search', 'utilities'], function(search, utilities) {
         }
     }
 
+    function previousPageSearch() {
+        if (!controller.isSearching()) {
+            controller.handleSearchPromise(searchs.previousPage());
+        }
+    }
+
     function previousPageImage() {
         if (!controller.isSearching()) {
             controller.handleImagePromise(images.previousPage());
@@ -147,27 +153,27 @@ require(['search', 'utilities'], function(search, utilities) {
         }
     }
 
-    function nextPageImage() {
-        if (!controller.isSearching()) {
-            controller.handleImagePromise(images.nextPage());
-        }
-    }
-
     function nextPageSearch() {
         if (!controller.isSearching()) {
             controller.handleSearchPromise(searchs.nextPage());
         }
     }
 
-    function goToPageImages(page) {
+    function nextPageImage() {
         if (!controller.isSearching()) {
-            controller.handleImagePromise(images.goToPage(page));
+            controller.handleImagePromise(images.nextPage());
         }
     }
 
     function goToPageSearchs(page) {
         if (!controller.isSearching()) {
             controller.handleSearchPromise(searchs.goToPage(page));
+        }
+    }
+
+    function goToPageImages(page) {
+        if (!controller.isSearching()) {
+            controller.handleImagePromise(images.goToPage(page));
         }
     }
 
@@ -208,7 +214,7 @@ require(['search', 'utilities'], function(search, utilities) {
     ///////////////////////////////////////
     // Form view //////////////////////////
     ///////////////////////////////////////
-    
+
     /**
      * Initializes all the elements to be used in the search box view, and the events
      */
@@ -218,8 +224,8 @@ require(['search', 'utilities'], function(search, utilities) {
         self.btnSearch = document.getElementById("btnSearch");
         self.spinner = document.getElementById("spinner");
         self.textSearch = document.getElementById("textSearch");
-        var clickSearch = function(event) {   
-            setLoadingFormView(true);         
+        var clickSearch = function(event) {
+            setLoadingFormView(true);
             controller.restartSearch();
             controller.doSearch(self.textSearch.value);
         };
@@ -227,7 +233,7 @@ require(['search', 'utilities'], function(search, utilities) {
         var keyPressSearch = function(event) {
             var keyCode = event.which;
             if (keyCode == 13) {
-                setLoadingFormView(true); 
+                setLoadingFormView(true);
                 controller.restartSearch();
                 controller.doSearch(self.textSearch.value);
             }
@@ -238,9 +244,9 @@ require(['search', 'utilities'], function(search, utilities) {
     /**
      * Set loading state of search box view if isLoading is true
      * @param  {Boolean}  isLoading  If true set the loading state
-     */   
+     */
     function setLoadingFormView(isLoading) {
-        if (isLoading){
+        if (isLoading) {
             this.content.style.display = "none";
             this.spinner.classList.add('loading');
             this.spinner.classList.add('fa-spin');
@@ -282,7 +288,7 @@ require(['search', 'utilities'], function(search, utilities) {
             controller.nextPageSearch();
         };
         var pageKeyPress = function(event) {
-            if (event.which === 13){
+            if (event.which === 13) {
                 setLoadingSearchView(true);
                 eventPageKeyPress(self.inputPageSearch, controller.getCurrentPageSearch(), controller.goToPageSearchs);
             }
@@ -295,9 +301,9 @@ require(['search', 'utilities'], function(search, utilities) {
     /**
      * Set loading state if isLoading is true
      * @param  {Boolean}  isLoading  If true set the loading state
-     */    
-     function setLoadingSearchView(isLoading) {
-        if (isLoading){
+     */
+    function setLoadingSearchView(isLoading) {
+        if (isLoading) {
             this.sectionSearchs.classList.add('loading');
             this.paginationSearchs.classList.add('loading');
         } else {
@@ -310,14 +316,14 @@ require(['search', 'utilities'], function(search, utilities) {
      * Renders the search list of the search section
      */
     function renderSearchView() {
-        this.sectionSearchs.style.display = "block";
         this.searchList.innerHTML = "";
         this.totalResults.innerHTML = "";
         this.errorSearch.innerHTML = "";
+        this.errorSearch.style.display = "none";
+        this.sectionSearchs.style.display = "block";
         if (controller.getErrorSearch() !== "" || controller.getSearchs().length === 0) {
             renderError(this.searchList, this.errorSearch, controller.getErrorSearch(), controller.getSearchs().length);
         } else {
-            this.errorSearch.style.display = "none";
             this.searchList.style.display = "block";
             controller.getSearchs().forEach(function(item) {
                 var template = document.getElementById('searchItem').innerHTML;
@@ -377,7 +383,7 @@ require(['search', 'utilities'], function(search, utilities) {
             controller.nextPageImage();
         };
         var pageKeyPress = function(event) {
-            if (event.which === 13){
+            if (event.which === 13) {
                 setLoadingImageView(true);
                 eventPageKeyPress(self.inputPageImage, controller.getCurrentPageImages(), controller.goToPageImages);
             }
@@ -390,9 +396,9 @@ require(['search', 'utilities'], function(search, utilities) {
     /**
      * Set loading state if isLoading is true
      * @param  {Boolean}  isLoading  If true set the loading state
-     */    
-     function setLoadingImageView(isLoading) {
-        if (isLoading){
+     */
+    function setLoadingImageView(isLoading) {
+        if (isLoading) {
             this.sectionImages.classList.add('loading');
             this.paginationImages.classList.add('loading');
         } else {
@@ -405,14 +411,14 @@ require(['search', 'utilities'], function(search, utilities) {
      * Renders the image list of the image section
      */
     function renderImageView() {
-        this.sectionImages.style.display = "block";
         this.imagesList.innerHTML = "";
         this.totalImages.innerHTML = "";
         this.errorImages.innerHTML = "";
+        this.errorImages.style.display = "none";
+        this.sectionImages.style.display = "block";
         if (controller.getErrorImages() !== "" || controller.getImages().length === 0) {
             renderError(this.imagesList, this.errorImages, controller.getErrorImages(), controller.getImages().length);
         } else {
-            this.errorImages.style.display = "none";
             this.imagesList.style.display = "block";
             controller.getImages().forEach(function(item) {
                 var template = document.getElementById('imageItem').innerHTML;
@@ -469,7 +475,6 @@ require(['search', 'utilities'], function(search, utilities) {
      */
     function renderError(listElement, errorElement, errorMsg, itemsLength) {
         listElement.style.display = "none";
-        errorElement.style.display = "block";
         errorElement.className = 'message-info';
         if (errorMsg !== "") {
             errorElement.innerHTML = errorMsg;
@@ -482,5 +487,6 @@ require(['search', 'utilities'], function(search, utilities) {
             errorElement.innerHTML = "No item found for the specified criteria";
             errorElement.className += ' info';
         }
+        errorElement.style.display = "block";
     }
 });
