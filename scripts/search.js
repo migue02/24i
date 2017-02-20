@@ -105,7 +105,7 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
     var promise = new Promise(
       function(resolve, reject) {
         if (self.searchText !== '') {
-          GoogleCustomsearch.dosearch(self.searchText, self.startIndex, self.count, self.searchType).then(function(response) {
+          GoogleCustomSearch.dosearch(self.searchText, self.startIndex, self.count, self.searchType).then(function(response) {
             self.restartResults();
             if (response.items) {
               self.results = response.items;
