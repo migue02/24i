@@ -5,7 +5,7 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
    * 
    * @param {Boolean} If true, it sets the searchType to 'image' to do an only image search
    */
-  function search(hassearchType) {
+  function search(hasSearchType) {
     this.searchText = '';
     this.startIndex = 1;
     this.next = null;
@@ -15,7 +15,7 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
     this.formattedTotalResults = '';
     this.error = '';
     this.results = [];
-    if (hassearchType) {
+    if (hasSearchType) {
       this.searchType = 'image';
     }
     this.currentPage = 1;
@@ -56,14 +56,14 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
   /**
    * @return {String} Total result of the search 
    */
-  search.prototype.getTotalsearchs = function() {
+  search.prototype.getTotalSearchs = function() {
     return this.totalResults;
   };
 
   /**
    * @return {String} Total result of the search with html marks
    */
-  search.prototype.getFormattedTotalsearchs = function() {
+  search.prototype.getFormattedTotalSearchs = function() {
     return this.formattedTotalResults;
   };
 
@@ -173,7 +173,7 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
     this.currentPage = page;
     this.count = 10;
     this.startIndex = ((page - 1) * this.count) + 1;
-    return this.dosearch(this.searchText);
+    return this.doSearch(this.searchText);
   };
 
   /**
@@ -186,7 +186,7 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
       this.currentPage++;
       this.startIndex = this.next.startIndex;
       this.count = this.next.count;
-      return this.dosearch(this.next.searchTerms);
+      return this.doSearch(this.next.searchTerms);
     }
   };
 
@@ -200,7 +200,7 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
       this.currentPage--;
       this.startIndex = this.previous.startIndex;
       this.count = this.previous.count;
-      return this.dosearch(this.previous.searchTerms);
+      return this.doSearch(this.previous.searchTerms);
     }
   };
 
