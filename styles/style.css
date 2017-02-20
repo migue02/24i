@@ -11,6 +11,11 @@ button {
   cursor: pointer;
 }
 
+.title-page {
+  text-align: center;
+  padding-top: 2rem;
+}
+
 .section {
   margin: 0 auto;
   overflow: auto;
