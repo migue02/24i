@@ -1,11 +1,11 @@
-define('Utilities', function(Utilities) {
+define('utilities', function() {
 
-	var Utilities = {
+	var utilities = {
 		TryParseInt: TryParseInt,
 		CreateButton: CreateButton
 	}
 
-	return Utilities;
+	return utilities;
 
 	//////////////////////////
 

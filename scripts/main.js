@@ -1,7 +1,7 @@
-require(['Search', 'Utilities'], function(Search, Utilities) {
+require(['search', 'utilities'], function(search, utilities) {
 
-    var searchs = new Search();
-    var images = new Search(true);
+    var searchs = new search();
+    var images = new search(true);
 
     var controller = {
         currentSearchText: '',
@@ -452,7 +452,7 @@ require(['Search', 'Utilities'], function(Search, Utilities) {
      * @param  {Function}   callback     Function to execute if everything is ok
      */
     function eventPageKeyPress(inputPage, currentPage, callback) {
-        var newPage = Utilities.TryParseInt(inputPage.value, currentPage);
+        var newPage = utilities.TryParseInt(inputPage.value, currentPage);
         if (newPage > 0) {
             callback(newPage);
         } else {

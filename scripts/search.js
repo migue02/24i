@@ -1,11 +1,11 @@
-define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
+define('search', ['GoogleCustomsearch'], function(GoogleCustomsearch) {
 
   /**
-   * Constructor of the Search object
+   * Constructor of the search object
    * 
    * @param {Boolean} If true, it sets the searchType to 'image' to do an only image search
    */
-  function Search(hasSearchType) {
+  function search(hassearchType) {
     this.searchText = '';
     this.startIndex = 1;
     this.next = null;
@@ -15,7 +15,7 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
     this.formattedTotalResults = '';
     this.error = '';
     this.results = [];
-    if (hasSearchType) {
+    if (hassearchType) {
       this.searchType = 'image';
     }
     this.currentPage = 1;
@@ -24,7 +24,7 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
   /**
    * Restart the properties that are used in each search
    */
-  Search.prototype.restartResults = function() {
+  search.prototype.restartResults = function() {
     this.totalResults = 0;
     this.formattedTotalResults = '';
     this.results = [];
@@ -49,52 +49,52 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
    *  title}
    * @return {Array} Result of the search
    */
-  Search.prototype.getResults = function() {
+  search.prototype.getResults = function() {
     return this.results;
   };
 
   /**
    * @return {String} Total result of the search 
    */
-  Search.prototype.getTotalSearchs = function() {
+  search.prototype.getTotalsearchs = function() {
     return this.totalResults;
   };
 
   /**
    * @return {String} Total result of the search with html marks
    */
-  Search.prototype.getFormattedTotalSearchs = function() {
+  search.prototype.getFormattedTotalsearchs = function() {
     return this.formattedTotalResults;
   };
 
   /**
    * @return {Int} Return de current number page of the search
    */
-  Search.prototype.getCurrentPage = function() {
+  search.prototype.getCurrentPage = function() {
     return this.currentPage;
   };
 
   /**
    * @return {String} The error that had occurred in the search function
    */
-  Search.prototype.getError = function() {
+  search.prototype.getError = function() {
     return this.error;
   }
 
   /**
    * @return {Boolean} If it is searching
    */
-  Search.prototype.isSearching = function() {
+  search.prototype.issearching = function() {
     return this.searching;
   }
 
   /**
-   * Call the function doSearch of GoogleCustomSearch with the text specified
+   * Call the function dosearch of GoogleCustomsearch with the text specified
    * 
    * @param  {String} Text to search
    * @return {Promise}
    */
-  Search.prototype.doSearch = function(text) {
+  search.prototype.dosearch = function(text) {
     var self = this;
     this.searching = true;
     if (text !== this.searchText) {
@@ -105,7 +105,7 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
     var promise = new Promise(
       function(resolve, reject) {
         if (self.searchText !== '') {
-          GoogleCustomSearch.doSearch(self.searchText, self.startIndex, self.count, self.searchType).then(function(response) {
+          GoogleCustomsearch.dosearch(self.searchText, self.startIndex, self.count, self.searchType).then(function(response) {
             self.restartResults();
             if (response.items) {
               self.results = response.items;
@@ -150,7 +150,7 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
    * 
    * @return {Boolean} True if exists next page
    */
-  Search.prototype.hasNext = function() {
+  search.prototype.hasNext = function() {
     return this.next !== null && !isNaN(this.next.startIndex) && this.next.startIndex !== null;
   };
 
@@ -159,7 +159,7 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
    * 
    * @return {Boolean} True if exists previous page
    */
-  Search.prototype.hasPrevious = function() {
+  search.prototype.hasPrevious = function() {
     return this.previous !== null && !isNaN(this.previous.startIndex) && this.previous.startIndex !== null;
   };
 
@@ -169,11 +169,11 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
    * @param  {Int} The target number page
    * @return {Promise}
    */
-  Search.prototype.goToPage = function(page) {
+  search.prototype.goToPage = function(page) {
     this.currentPage = page;
     this.count = 10;
     this.startIndex = ((page - 1) * this.count) + 1;
-    return this.doSearch(this.searchText);
+    return this.dosearch(this.searchText);
   };
 
   /**
@@ -181,12 +181,12 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
    * 
    * @return {Promise}
    */
-  Search.prototype.nextPage = function() {
+  search.prototype.nextPage = function() {
     if (this.hasNext()) {
       this.currentPage++;
       this.startIndex = this.next.startIndex;
       this.count = this.next.count;
-      return this.doSearch(this.next.searchTerms);
+      return this.dosearch(this.next.searchTerms);
     }
   };
 
@@ -195,14 +195,14 @@ define('Search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
    * 
    * @return {Promise}
    */
-  Search.prototype.previousPage = function() {
+  search.prototype.previousPage = function() {
     if (this.hasPrevious()) {
       this.currentPage--;
       this.startIndex = this.previous.startIndex;
       this.count = this.previous.count;
-      return this.doSearch(this.previous.searchTerms);
+      return this.dosearch(this.previous.searchTerms);
     }
   };
 
-  return Search;
+  return search;
 });
