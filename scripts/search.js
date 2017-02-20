@@ -24,7 +24,7 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
   /**
    * Restart the properties that are used in each search
    */
-  search.prototype.restartResults = function() {
+  search.prototype.restartResults = function(pages) {
     this.totalResults = 0;
     this.formattedTotalResults = '';
     this.results = [];
@@ -33,6 +33,9 @@ define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
     this.error = '';
     this.next = null;
     this.previous = null;
+    if (pages) {
+      this.currentPage = 1;
+    }
   };
 
   /**

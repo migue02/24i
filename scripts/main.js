@@ -118,9 +118,9 @@ require(['search', 'utilities'], function(search, utilities) {
         return images.getError();
     }
 
-    function restartSearch() {
-        searchs.restartResults();
-        images.restartResults();
+    function restartSearch(pages) {
+        searchs.restartResults(pages);
+        images.restartResults(pages);
     }
 
     function isSearching() {
@@ -129,6 +129,7 @@ require(['search', 'utilities'], function(search, utilities) {
 
     function doSearch(text) {
         if (!controller.isSearching()) {
+            restartSearch(true);
             controller.currentSearchText = text;
             controller.handleSearchPromise(searchs.doSearch(text));
             controller.handleImagePromise(images.doSearch(text));
@@ -227,7 +228,6 @@ require(['search', 'utilities'], function(search, utilities) {
         this.spinner.classList.add('fa-search');
         var clickSearch = function(event) {
             setLoadingFormView(true);
-            controller.restartSearch();
             controller.doSearch(self.textSearch.value);
         };
         self.btnSearch.addEventListener('click', clickSearch);
@@ -235,7 +235,6 @@ require(['search', 'utilities'], function(search, utilities) {
             var keyCode = event.which;
             if (keyCode == 13) {
                 setLoadingFormView(true);
-                controller.restartSearch();
                 controller.doSearch(self.textSearch.value);
             }
         };
