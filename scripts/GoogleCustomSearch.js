@@ -626,11 +626,11 @@ define(function(GoogleCustomSearch) {
             }
         }]
     };
-    var customSearch = {
+    var GoogleCustomSearch = {
         doSearch: doSearch
     };
 
-    return customSearch;
+    return GoogleCustomSearch;
 
     /////////////////////////////////////////////
 

@@ -1,4 +1,4 @@
-define('search', ['GoogleCustomsearch'], function(GoogleCustomsearch) {
+define('search', ['GoogleCustomSearch'], function(GoogleCustomSearch) {
 
   /**
    * Constructor of the search object
