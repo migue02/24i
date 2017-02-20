@@ -8,57 +8,57 @@
         <link href="styles/style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <h1 class="title-page">Google Custom Search</h1>
-        <div class="page-wrapper">
-            <div class="section center flex-container search-section">
+        <div class="search-wrapper">
+            <h1 class="title-page">Google Custom Search</h1>
+            <div class="flex-container search-section">
                 <input id="textSearch" type="text" name="search" placeholder="Search..." class="search-field"/>
                 <button id="btnSearch" class="search-button">
                     <i id="spinner" class="fa"></i>Search
                 </button>
             </div>
-            <div id="content" class="content-out">
-                <div class="content">
-                    <div id="sectionSearchs" class="content-left">
-                        <h2 class="title-content">Normal search results</h2>
-                        <span id="errorSearch" class="message-info"></span>
-                        <ul id="searchList" class="search-list">
-                        </ul> 
-                    </div>
-                    <div id="sectionImages" class="content-right">
-                        <h2 class="title-content">Image search results</h2>
-                        <span id="errorImages" class="message-info"></span>
-                        <ul id="imagesList" class="image-list">
-                        </ul> 
-                    </div>
+        </div>
+        <div id="content" class="content-out">
+            <div class="content">
+                <div id="sectionSearchs" class="content-left">
+                    <h2 class="title-content">Normal search results</h2>
+                    <span id="errorSearch" class="message-info"></span>
+                    <ul id="searchList" class="search-list">
+                    </ul> 
                 </div>
-                <div class="bottom">
-                    <div class="bottom-left">
-                        <div class="bottom-margin">
-                            <div id="paginationSearchs" class="pagination">
-                                <button id="btnPreviousSearch">&lt;</button>
-                                <input id="inputPageSearch" type="text">
-                                <button id="btnNextSearch">&gt;</button>
-                            </div>     
-                        </div> 
-                        <div class="bottom-margin">
-                            <label id="totalResults" class="total-results"></label>
-                        </div> 
-                    </div> 
-                    <div class="bottom-right">
-                        <div class="bottom-margin">
-                            <div id="paginationImages" class="pagination">
-                                <button id="btnPreviousImage">&lt;</button>
-                                <input id="inputPageImage" type="text">
-                                <button id="btnNextImage">&gt;</button>
-                            </div>     
-                        </div>     
-                        <div class="bottom-margin">
-                            <label id="totalImages" class="total-results"></label>
-                        </div>    
-                    </div>   
-                </div>   
+                <div id="sectionImages" class="content-right">
+                    <h2 class="title-content">Image search results</h2>
+                    <span id="errorImages" class="message-info"></span>
+                    <ul id="imagesList" class="image-list">
+                    </ul> 
+                </div>
             </div>
-        </div>  
+            <div class="bottom">
+                <div class="bottom-left">
+                    <div class="bottom-margin">
+                        <div id="paginationSearchs" class="pagination">
+                            <button id="btnPreviousSearch">&lt;</button>
+                            <input id="inputPageSearch" type="text">
+                            <button id="btnNextSearch">&gt;</button>
+                        </div>     
+                    </div> 
+                    <div class="bottom-margin">
+                        <label id="totalResults" class="total-results"></label>
+                    </div> 
+                </div> 
+                <div class="bottom-right">
+                    <div class="bottom-margin">
+                        <div id="paginationImages" class="pagination">
+                            <button id="btnPreviousImage">&lt;</button>
+                            <input id="inputPageImage" type="text">
+                            <button id="btnNextImage">&gt;</button>
+                        </div>     
+                    </div>     
+                    <div class="bottom-margin">
+                        <label id="totalImages" class="total-results"></label>
+                    </div>    
+                </div>   
+            </div>   
+        </div> 
         <script data-main="scripts/main" src="scripts/require.js"></script>
         <script id="searchItem" type="x-template">
             <h3>

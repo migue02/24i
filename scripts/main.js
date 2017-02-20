@@ -224,6 +224,7 @@ require(['search', 'utilities'], function(search, utilities) {
         self.btnSearch = document.getElementById("btnSearch");
         self.spinner = document.getElementById("spinner");
         self.textSearch = document.getElementById("textSearch");
+        this.spinner.classList.add('fa-search');
         var clickSearch = function(event) {
             setLoadingFormView(true);
             controller.restartSearch();
@@ -248,10 +249,12 @@ require(['search', 'utilities'], function(search, utilities) {
     function setLoadingFormView(isLoading) {
         if (isLoading) {
             this.content.style.display = "none";
+            this.spinner.classList.remove('fa-search');
             this.spinner.classList.add('loading');
             this.spinner.classList.add('fa-spin');
             this.spinner.classList.add('fa-circle-o-notch');
         } else {
+            this.spinner.classList.add('fa-search');
             this.spinner.classList.remove('loading');
             this.spinner.classList.remove('fa-spin');
             this.spinner.classList.remove('fa-circle-o-notch');

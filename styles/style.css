@@ -14,14 +14,8 @@ button {
 
 .title-page {
   width: 100%;
-  position: fixed;
-  margin: 0;
   text-align: center;
-  padding: 2rem 0px;
-  background-color: #303F9F;
   color: white;
-  z-index: 999;
-  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
 }
 
 .section {
@@ -35,20 +29,23 @@ button {
   display: flex;
 }
 
-.page-wrapper {
-  padding: 1rem;
-}
-
-.center {
-  width: 80%;
-  margin-top: 8rem;
-  margin-bottom: 2rem;
+.search-wrapper {
+  margin: 0;
+  width: 100%;
+  position: fixed;
+  margin: 0;
+  text-align: center;
+  padding-bottom: 2rem;
+  background-color: #303F9F;
+  z-index: 999;
+  box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
 }
 
 /* Search field */
 .search-section {
   border: 1px solid rgba(190,190,190, 1);
-  border-radius: 3px
+  border-radius: 3px;
+  margin: 0px 6rem;
 }
 
 .search-section:hover {
@@ -88,7 +85,8 @@ button {
   display: none;
   clear:left;
   float:left;
-  width:100%;
+  width:100%;    
+  margin-top: 200px;
   overflow:hidden;
 }
 
