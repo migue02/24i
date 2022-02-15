@@ -1,0 +1,92 @@
+#EXTINF:-1, Movistar-Liga
+http://93.152.174.144:4000/play/beinlaliga/index.m3u8
+#EXTINF:-1, Supersport2
+http://93.157.62.180/Supersport2/playlist.m3u8?per
+#EXTINF:-1, SetantaSports2
+https://bal.varcdn1.ru/lb/setanta2/index.m3u8?per
+#EXTINF:-1, ESPN
+http://edge02-fdo-py.cvattv.com.ar/live/c3eds/ESPN2_PY/SA_SAGEMCOM/ESPN2_PY.m3u8?SBN
+#EXTINF:-1, GOLTV
+http://154.62.74.29:1935/live/gol/playlist.m3u8
+#EXTINF:-1 tvg-id="laligatvbar.es" tvg-name="ES| LALIGATV BAR HD" tvg-logo="https://lo1.in/LOGO/SPAIN/LaLigaTV%20Bar.png" group-title="EU | SPAIN HD",ES| LALIGATV BAR HD
+http://line.tv65.co:900/0595622779/2191126146/400220778
+#EXTINF:-1 tvg-id="mlaliga.es" tvg-name="ES| M. LALIGA HD" tvg-logo="https://lo1.in/LOGO/SPAIN/M-LALIGA.png" group-title="EU | SPAIN HD",ES| M. LALIGA HD
+http://line.tv65.co:900/0595622779/2191126146/165970
+#EXTINF:-1 tvg-id="mlaliga1.es" tvg-name="ES| M. LALIGA 1 HD" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_1_.png" group-title="EU | SPAIN HD",ES| M. LALIGA 1 HD
+http://line.tv65.co:900/0595622779/2191126146/165971
+#EXTINF:-1 tvg-id="mlaliga1.es" tvg-name="ES| M. LALIGA  2 HD" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_2.png" group-title="EU | SPAIN HD",ES| M. LALIGA  2 HD
+http://line.tv65.co:900/0595622779/2191126146/5971
+#EXTINF:-1 tvg-id="mlaliga1.es" tvg-name="ES| M. LALIGA 3 HD" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_3.png" group-title="EU | SPAIN HD",ES| M. LALIGA 3 HD
+http://line.tv65.co:900/0595622779/2191126146/5973
+#EXTINF:-1 tvg-id="mlaliga4.es" tvg-name="ES| M. LALIGA 4 [LIVEEVENT]" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_4.png" group-title="EU | SPAIN HD",ES| M. LALIGA 4 [LIVEEVENT]
+http://line.tv65.co:900/0595622779/2191126146/400220785
+#EXTINF:-1 tvg-id="mlaliga5.es" tvg-name="ES| M. LALIGA 5 [LIVEEVENT]" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_5.png" group-title="EU | SPAIN HD",ES| M. LALIGA 5 [LIVEEVENT]
+http://line.tv65.co:900/0595622779/2191126146/400220784
+#EXTINF:-1 tvg-id="mlaliga6.es" tvg-name="ES| M. LALIGA 6 [LIVEEVENT]" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_6.png" group-title="EU | SPAIN HD",ES| M. LALIGA 6 [LIVEEVENT]
+http://line.tv65.co:900/0595622779/2191126146/400220783
+#EXTINF:-1 tvg-id="mlaliga7.es" tvg-name="ES| M. LALIGA 7 [LIVEEVENT]" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_7.png" group-title="EU | SPAIN HD",ES| M. LALIGA 7 [LIVEEVENT]
+http://line.tv65.co:900/0595622779/2191126146/400220782
+#EXTINF:-1 tvg-id="mlaliga8.es" tvg-name="ES| M. LALIGA 8 [LIVEEVENT]" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_8.png" group-title="EU | SPAIN HD",ES| M. LALIGA 8 [LIVEEVENT]
+http://line.tv65.co:900/0595622779/2191126146/400220781
+#EXTINF:-1 tvg-id="mlaliga9.es" tvg-name="ES| M. LALIGA 9 [LIVEEVENT]" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_9.png" group-title="EU | SPAIN HD",ES| M. LALIGA 9 [LIVEEVENT]
+http://line.tv65.co:900/0595622779/2191126146/400220780
+#EXTINF:-1 tvg-id="" tvg-name="ES| M. LALIGA 10 [LIVEEVENT]" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_LaLiga_10.png" group-title="EU | SPAIN HD",ES| M. LALIGA 10 [LIVEEVENT]
+http://line.tv65.co:900/0595622779/2191126146/400220779
+#EXTINF:-1 tvg-id="movistardeportes.es" tvg-name="ES| M. DEPORTES HD" tvg-logo="https://lo1.in/LOGO/SPAIN/M.DEPORTE1HD.png" group-title="EU | SPAIN HD",ES| M. DEPORTES HD
+http://line.tv65.co:900/0595622779/2191126146/165974
+#EXTINF:-1 tvg-id="mdeportes1.es" tvg-name="ES| M. DEPORTES 1 HD" tvg-logo="https://lo1.in/LOGO/SPAIN/M.DEPORTE1HD.png" group-title="EU | SPAIN HD",ES| M. DEPORTES 1 HD
+http://line.tv65.co:900/0595622779/2191126146/400220795
+#EXTINF:-1 tvg-id="mdeportes2.es" tvg-name="ES| M. DEPORTES 2 HD" tvg-logo="https://lo1.in/LOGO/SPAIN/M.DEPORTE1HD.png" group-title="EU | SPAIN HD",ES| M. DEPORTES 2 HD
+http://line.tv65.co:900/0595622779/2191126146/155790
+#EXTINF:-1 tvg-id="mdeportes3.es" tvg-name="ES| M. DEPORTES 3 HD" tvg-logo="https://lo1.in/LOGO/SPAIN/M.DEPORTE1HD.png" group-title="EU | SPAIN HD",ES| M. DEPORTES 3 HD
+http://line.tv65.co:900/0595622779/2191126146/155791
+#EXTINF:-1 tvg-id="mdeportes4.es" tvg-name="ES| M. DEPORTES4 HD (LIVEEVEENT)" tvg-logo="https://lo1.in/LOGO/SPAIN/M.DEPORTE1HD.png" group-title="EU | SPAIN HD",ES| M. DEPORTES4 HD (LIVEEVEENT)
+http://line.tv65.co:900/0595622779/2191126146/400220794
+#EXTINF:-1 tvg-id="mdeportes5.es" tvg-name="ES| M. DEPORTES5 HD (LIVEEVEENT)" tvg-logo="https://lo1.in/LOGO/SPAIN/M.DEPORTE1HD.png" group-title="EU | SPAIN HD",ES| M. DEPORTES5 HD (LIVEEVEENT)
+http://line.tv65.co:900/0595622779/2191126146/400220793
+#EXTINF:-1 tvg-id="mdeportes6.es" tvg-name="ES| M. DEPORTES6 HD (LIVEEVEENT)" tvg-logo="https://lo1.in/LOGO/SPAIN/M.DEPORTE1HD.png" group-title="EU | SPAIN HD",ES| M. DEPORTES6 HD (LIVEEVEENT)
+http://line.tv65.co:900/0595622779/2191126146/400220792
+#EXTINF:-1 tvg-id="mdeportes7.es" tvg-name="ES| M. DEPORTES7 HD (LIVEEVEENT)" tvg-logo="https://lo1.in/LOGO/SPAIN/M.DEPORTE1HD.png" group-title="EU | SPAIN HD",ES| M. DEPORTES7 HD (LIVEEVEENT)
+http://line.tv65.co:900/0595622779/2191126146/400220791
+#EXTINF:-1 tvg-id="mligadecampeones.es" tvg-name="ES| M. LCAMPEONS HD" tvg-logo="https://lo1.in/LOGO/SPAIN/LIGADECAMPEONES.png" group-title="EU | SPAIN HD",ES| M. LCAMPEONS HD
+http://line.tv65.co:900/0595622779/2191126146/165968
+#EXTINF:-1 tvg-id="mligadecampeones1.es" tvg-name="ES| M. LCAMPEON 1 HD" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_Liga_de_Campeones.png" group-title="EU | SPAIN HD",ES| M. LCAMPEON 1 HD
+http://line.tv65.co:900/0595622779/2191126146/375701
+#EXTINF:-1 tvg-id="mligadecampeones2.es" tvg-name="ES| M. LCAMPEON 2 HD" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_Liga_de_Campeones.png" group-title="EU | SPAIN HD",ES| M. LCAMPEON 2 HD
+http://line.tv65.co:900/0595622779/2191126146/375702
+#EXTINF:-1 tvg-id="mligadecampeones3.es" tvg-name="ES| M. LCAMPEON 3 HD (SOLO EVENTO)" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_Liga_de_Campeones.png" group-title="EU | SPAIN HD",ES| M. LCAMPEON 3 HD (SOLO EVENTO)
+http://line.tv65.co:900/0595622779/2191126146/400173248
+#EXTINF:-1 tvg-id="mligadecampeones4.es" tvg-name="ES| M. LCAMPEON 4 HD (SOLO EVENTO)" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_Liga_de_Campeones.png" group-title="EU | SPAIN HD",ES| M. LCAMPEON 4 HD (SOLO EVENTO)
+http://line.tv65.co:900/0595622779/2191126146/400173249
+#EXTINF:-1 tvg-id="mligadecampeones5.es" tvg-name="ES| M. LCAMPEON 5 HD (SOLO EVENTO)" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_Liga_de_Campeones.png" group-title="EU | SPAIN HD",ES| M. LCAMPEON 5 HD (SOLO EVENTO)
+http://line.tv65.co:900/0595622779/2191126146/400173250
+#EXTINF:-1 tvg-id="mligadecampeones6.es" tvg-name="ES| M. LCAMPEON 6 HD (SOLO EVENTO)" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_Liga_de_Campeones.png" group-title="EU | SPAIN HD",ES| M. LCAMPEON 6 HD (SOLO EVENTO)
+http://line.tv65.co:900/0595622779/2191126146/400173251
+#EXTINF:-1 tvg-id="mligadecampeones7.es" tvg-name="ES| M. LCAMPEON 7 HD (SOLO EVENTO)" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_Liga_de_Campeones.png" group-title="EU | SPAIN HD",ES| M. LCAMPEON 7 HD (SOLO EVENTO)
+http://line.tv65.co:900/0595622779/2191126146/400173252
+#EXTINF:-1 tvg-id="mligadecampeones8.es" tvg-name="ES| M. LCAMPEON 8 HD (SOLO EVENTO)" tvg-logo="https://lo1.in/LOGO/SPAIN/Movistar_Liga_de_Campeones.png" group-title="EU | SPAIN HD",ES| M. LCAMPEON 8 HD (SOLO EVENTO)
+http://line.tv65.co:900/0595622779/2191126146/400173253
+#EXTINF:-1 tvg-id="" tvg-name="✦●✦CHAMPOINS LEAGUE✦●✦" tvg-logo="https://lo1.in/LOGO/ITALY/italianflag.png" group-title="EU | ITALY FHD",✦●✦CHAMPOINS LEAGUE✦●✦
+http://line.tv65.co:900/0595622779/2191126146/400248411
+#EXTINF:-1 tvg-id="" tvg-name="IT| VETRINA CHAMPOINS LEAGUE FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| VETRINA CHAMPOINS LEAGUE FHD
+http://line.tv65.co:900/0595622779/2191126146/400248423
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 1 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 1 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248422
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 2 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 2 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248421
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 3 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 3 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248420
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 4 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 4 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248419
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 5 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 5 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248418
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 6 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 6 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248417
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 7 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 7 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248416
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 8 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 8 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248415
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 9 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 9 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248414
+#EXTINF:-1 tvg-id="" tvg-name="IT| CHAMPIONS 10 FHD" tvg-logo="https://lo1.in/LOGO/ITALY/ITFHD/CHAMPIONS.png" group-title="EU | ITALY FHD",IT| CHAMPIONS 10 FHD
+http://line.tv65.co:900/0595622779/2191126146/400248413
